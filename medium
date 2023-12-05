@@ -1,0 +1,43 @@
+def maj_ele(nums):
+    if not nums:
+        return []
+
+    can1, can2, cou1, cou2 = float('inf'), float('inf'), 0, 0
+
+    # Step 1: Find the two potential candidates
+    for num in nums:
+        if num == can1:
+            cou1 += 1
+        elif num == can2:
+            cou2 += 1
+        elif cou1 == 0:
+            can1, cou1 = num, 1
+        elif cou2 == 0:
+            can2, cou2 = num, 1
+        else:
+            cou1 -= 1
+            cou2 -= 1
+
+    # Step 2: Count the occurrences of the candidates
+    cou1 = cou2 = 0
+    for num in nums:
+        if num == can1:
+            cou1 += 1
+        elif num == can2:
+            cou2 += 1
+
+    # Step 3: Check if the candidates appear more than ⌊ n/3 ⌋ times
+    result = []
+    if cou1 > len(nums) // 3:
+        result.append(can1)
+    if cou2 > len(nums) // 3:
+        result.append(can2)
+
+    return result
+
+# Take input from the user
+nums = list(map(int, input("Enter the array : ").split(',')))
+
+# Call the function and print the result
+result = maj_ele(nums)
+print(result)
