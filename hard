@@ -1,0 +1,21 @@
+def palind(s):
+    if not s:
+        return s
+
+    # Create the reversed string
+    rev = s[::-1]
+
+    # Check the longest suffix that is also a prefix in the reversed string
+    for i in range(len(s)):
+        if s.startswith(rev[i:]):
+            return rev[:i] + s
+
+    # If the entire string is a palindrome, return the original string
+    return s
+
+# Take input from the user
+s = input("Enter a string: ")
+
+# Call the function and print the result
+result = palind(s)
+print( result)
