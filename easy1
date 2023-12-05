@@ -1,0 +1,13 @@
+def len_last_word(s):
+    w = s.split()
+    if not w:
+        return 0, ""
+    l_w = w[-1]
+    return len(l_w), l_w
+
+# Take input from the user
+input_string = input("Enter a string: ")
+
+# Call the function and print the result in a single line
+length, l_w = len_last_word(input_string)
+print(f" the last word is {l_w}: {length} ")
